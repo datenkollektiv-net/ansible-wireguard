@@ -5,6 +5,7 @@
     dest: /etc/wireguard/{{ item }}.conf
     mode: 0600
   register: configuration
+  become: true
 
 - name: Enable wg-quick@{{ item }} service
   service:

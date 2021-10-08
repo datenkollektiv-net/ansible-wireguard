@@ -1,6 +1,4 @@
 ---
-- include_tasks: "{{ ansible_distribution | lower }}_repositories.yml"
-
 - name: Install wireguard
   package:
     name: wireguard
