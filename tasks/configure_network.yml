@@ -5,7 +5,7 @@
     dest: /etc/wireguard/{{ item }}.conf
     mode: 0600
   register: configuration
-  become: true
+  become: True
 
 - name: Enable wg-quick@{{ item }} service
   service:
@@ -13,10 +13,12 @@
     state: started
     enabled: yes
   tags: install
+  become: True
   when: wireguard_manage_services
 
 - name: Restart wg-quick@{{ item }}
   service:
     name: wg-quick@{{ item }}
     state: restarted
+  become: True
   when: configuration is changed and wireguard_manage_services
